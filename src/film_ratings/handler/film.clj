@@ -21,3 +21,12 @@
                    result)]
       [::response/ok (views.film/film-view film alerts)])))
 
+
+(defmethod ig/init-key :film-ratings.handler.film/list [_ {:keys [db]}]
+  (fn [_]
+    (let [films-list (boundary.film/list-films db)]
+      (if (seq films-list)
+        [::response/ok (views.film/list-films-view films-list {})]
+        [::response/ok (views.film/list-films-view [] {:message ["No films found."]})]))))
+
+
