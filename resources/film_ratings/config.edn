@@ -20,10 +20,10 @@
   :duct.database.sql/hikaricp
   {:adapter "postgresql"
    :port-number #duct/env ["DB_PORT" :or "5432"]
-   :server-name #duct/env ["DB_HOST"]
+   :server-name #duct/env ["DB_HOST" :or "localhost"]
    :database-name "filmdb"
    :username "filmuser"
-   :password #duct/env ["DB_PASSWORD"]}
+   :password #duct/env ["DB_PASSWORD" :or "password"]}
 
   :duct.migrator/ragtime {
     :database #ig/ref :duct.database/sql
