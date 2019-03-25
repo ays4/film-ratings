@@ -1,2 +1,11 @@
 {:duct.database/sql
- {:connection-uri "jdbc:sqlite:db/dev.sqlite"}}
+ ;{:connection-uri "jdbc:sqlite:db/dev.sqlite"}
+ ;{:jdbc-url "jdbc:sqlite:db/dev.sqlite"}
+ ;{:database-url "jdbc:sqlite:db/dev.sqlite"}
+ {:adapter "postgresql"
+   :port-number #duct/env ["DB_PORT" :or "5432"]
+   :server-name #duct/env ["DB_HOST" :or "localhost"]
+   :database-name "filmdb"
+   :username "filmuser"
+   :password #duct/env ["DB_PASSWORD" :or "password"]}
+}
